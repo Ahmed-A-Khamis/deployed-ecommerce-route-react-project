@@ -22,18 +22,17 @@ export default function CheckOut() {
 	async function PayNow(shippingAddress) {
 		try {
 			setIsProcessingPayment(true);
-			location.href = "/";
-			// let { data } = await axios.post(
-			// 	`https://ecommerce.routemisr.com/api/v1/orders/checkout-session/${id}?url=https://e-commerce-git-main-`,
-			// 	{
-			// 		shippingAddress,
-			// 	},
-			// 	{ headers }
-			// );
+			let { data } = await axios.post(
+				`https://ecommerce.routemisr.com/api/v1/orders/checkout-session/${id}?url=https://deployed-ecommerce-route-react-proj.vercel.app/`,
+				{
+					shippingAddress,
+				},
+				{ headers }
+			);
 
-			// console.log(data);
+			console.log(data);
 
-			// location.href = data.session.url;
+			location.href = data.session.url;
 		} catch (error) {
 			console.log(error);
 		} finally {
